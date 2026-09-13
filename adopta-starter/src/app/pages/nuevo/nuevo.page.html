@@ -5,4 +5,11 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-input label="Nombre" placeholder="Ingrese el nombre del perrito" [(ngModel)]="nombre"></ion-input>
+  <ion-input label="Raza" placeholder="Ingrese la raza del perrito" [(ngModel)]="raza"></ion-input>
+  <ion-input label="Edad" placeholder="Ingrese la edad del perrito" [(ngModel)]="edad"></ion-input>
+  <ion-input label="Sexo" placeholder="Ingrese el sexo del perrito" [(ngModel)]="sexo"></ion-input>
+  <ion-input label="Tamaño" placeholder="Ingrese el tamaño del perrito" [(ngModel)]="tamano"></ion-input>
+  <ion-button expand="full" type="submit" [disabled]="!nombre.trim()" (click)="guardar()">Guardar</ion-button>
 </ion-content>
+
