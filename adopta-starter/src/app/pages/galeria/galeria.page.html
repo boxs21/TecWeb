@@ -1,8 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Galería</ion-title>
+    <ion-button slot="end" routerLink="/nuevo"> 
+      Nuevo
+    </ion-button>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      @for (perro of perros; track perro.id) {
+        <ion-col size="12" size-md="6">
+          <app-tarjeta-perro [perro]="perro"></app-tarjeta-perro>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
 </ion-content>
