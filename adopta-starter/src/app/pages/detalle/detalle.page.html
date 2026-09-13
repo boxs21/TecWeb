@@ -1,8 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ perro ? perro.nombre : 'Detalle' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  @if (perro) {
+    <img [src]="perro.foto" class="foto" />
+
+    <h1>
+      {{ perro.nombre }}
+      <ion-badge color="success" *ngIf="perro.adoptado">Adoptado</ion-badge>
+      <ion-badge color="primary" *ngIf="!perro.adoptado">Disponible</ion-badge>
+    </h1>
+
+    <p><strong>Tipo:</strong> {{ perro.tipo }}</p>
+    <p><strong>Raza:</strong> {{ perro.raza }}</p>
+    <p><strong>Edad:</strong> {{ perro.edad }}</p>
+    <p><strong>Sexo:</strong> {{ perro.sexo }}</p>
+    <p><strong>Tamaño:</strong> {{ perro.tamano }}</p>
+    <p><strong>Vacunada:</strong> {{ perro.vacunada ? 'Sí' : 'No' }}</p>
+    <p>{{ perro.descripcion }}</p>
+
+    <ion-button expand="full" routerLink="/">Volver a la galería</ion-button>
+  } @else {
+    <p>No se encontró ese perrito.</p>
+    <ion-button expand="full" routerLink="/">Volver a la galería</ion-button>
+  }
 </ion-content>
