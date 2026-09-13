@@ -1,0 +1,7 @@
+{
+  "name": "clase2-adopta-starter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
