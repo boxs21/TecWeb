@@ -67,4 +67,25 @@ export class PerrosService {
     this.perros.push(perro);
   }
 
+  editar(perroEditado: Perro): void {
+    const index = this.perros.findIndex(perro => perro.id === perroEditado.id);
+    if (index !== -1) {
+      this.perros[index] = perroEditado;
+    }
+  }
+
+  eliminar(id: number): void {
+    const index = this.perros.findIndex(perro => perro.id === id);
+    if (index !== -1) {
+      this.perros.splice(index, 1);
+    }
+  }
+
+  adoptar(id: number): void {
+    const perro = this.perros.find(perro => perro.id === id);
+    if (perro) {
+      perro.adoptado = true;
+    }
+  }
+
 }
