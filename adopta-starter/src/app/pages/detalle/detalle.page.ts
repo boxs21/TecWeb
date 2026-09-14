@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -34,8 +34,32 @@ import { PerrosService, Perro } from '../../services/perros.service';
 export class DetallePage {
   perro?: Perro;
 
-  constructor(route: ActivatedRoute, perrosService: PerrosService) {
-    const id = route.snapshot.paramMap.get('id') ?? '';
-    this.perro = perrosService.obtener(id);
+  constructor(
+    private route: ActivatedRoute,
+    private perrosService: PerrosService,
+    private router: Router,
+  ) {
+    const id = this.route.snapshot.paramMap.get('id') ?? '';
+    this.perro = this.perrosService.obtener(id);
+  }
+
+  adoptar(): void {
+    if (!this.perro) {
+      return;
+    }
+    this.perrosService.adoptar(this.perro.id);
+    this.perro.adoptado = true;
+  }
+
+  eliminar(): void {
+    if (!this.perro) {
+      return;
+    }
+    const confirmado = confirm(`¿Seguro que quieres eliminar a ${this.perro.nombre}? Esta acción no se puede deshacer.`);
+    if (!confirmado) {
+      return;
+    }
+    this.perrosService.eliminar(this.perro.id);
+    this.router.navigateByUrl('/galeria');
   }
 }

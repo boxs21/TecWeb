@@ -3,6 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'galeria',
+    pathMatch: 'full',
+  },
+  {
+    path: 'galeria',
     loadComponent: () =>
       import('./pages/galeria/galeria.page').then((m) => m.GaleriaPage),
   },
@@ -15,5 +20,10 @@ export const routes: Routes = [
     path: 'nuevo',
     loadComponent: () =>
       import('./pages/nuevo/nuevo.page').then((m) => m.NuevoPage),
+  },
+  {
+    path: 'editar/:id',
+    loadComponent: () =>
+      import('./pages/editar/editar.page').then((m) => m.EditarPage),
   },
 ];

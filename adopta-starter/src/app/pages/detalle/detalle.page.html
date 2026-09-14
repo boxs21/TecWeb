@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/galeria"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ perro ? perro.nombre : 'Detalle' }}</ion-title>
   </ion-toolbar>
@@ -25,9 +25,17 @@
     <p><strong>Vacunada:</strong> {{ perro.vacunada ? 'Sí' : 'No' }}</p>
     <p>{{ perro.descripcion }}</p>
 
-    <ion-button expand="full" routerLink="/">Volver a la galería</ion-button>
+    <ion-button expand="full" [routerLink]="['/editar', perro.id]">Editar</ion-button>
+    <ion-button
+      *ngIf="!perro.adoptado"
+      expand="full"
+      color="success"
+      (click)="adoptar()"
+    >Marcar como adoptado</ion-button>
+    <ion-button expand="full" color="danger" (click)="eliminar()">Eliminar</ion-button>
+    <ion-button expand="full" fill="outline" routerLink="/galeria">Volver a la galería</ion-button>
   } @else {
     <p>No se encontró ese perrito.</p>
-    <ion-button expand="full" routerLink="/">Volver a la galería</ion-button>
+    <ion-button expand="full" routerLink="/galeria">Volver a la galería</ion-button>
   }
 </ion-content>

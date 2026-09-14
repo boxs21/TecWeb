@@ -39,6 +39,6 @@ export class NuevoPage {
       adoptado: false, // Por defecto, asumimos que no está adoptado
     };
     this.perrosService.agregar(nuevoPerro);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/galeria');
   }
 }

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar perrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (perro) {
+    <ion-input label="Nombre" placeholder="Nombre del perrito" [(ngModel)]="perro.nombre"></ion-input>
+    <ion-input label="Tipo" placeholder="Perro, Gato, Otro..." [(ngModel)]="perro.tipo"></ion-input>
+    <ion-input label="Raza" placeholder="Raza del perrito" [(ngModel)]="perro.raza"></ion-input>
+    <ion-input label="Edad" placeholder="Edad del perrito" [(ngModel)]="perro.edad"></ion-input>
+    <ion-input label="Sexo" placeholder="Sexo del perrito" [(ngModel)]="perro.sexo"></ion-input>
+    <ion-input label="Tamaño" placeholder="Tamaño del perrito" [(ngModel)]="perro.tamano"></ion-input>
+    <ion-input label="Foto (URL)" placeholder="URL de la foto" [(ngModel)]="perro.foto"></ion-input>
+    <ion-textarea label="Descripción" placeholder="Descripción del perrito" [(ngModel)]="perro.descripcion"></ion-textarea>
+    <ion-toggle [(ngModel)]="perro.vacunada">Vacunada</ion-toggle>
+
+    <ion-button expand="full" type="submit" [disabled]="!perro.nombre.trim()" (click)="guardar()">Guardar</ion-button>
+  } @else {
+    <p>No se encontró ese perrito.</p>
+  }
+</ion-content>
