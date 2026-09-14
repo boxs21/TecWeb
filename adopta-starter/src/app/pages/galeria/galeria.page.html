@@ -1,10 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Galería</ion-title>
-    <ion-button slot="end" routerLink="/nuevo"> 
-      Nuevo
-    </ion-button>
-    
+    <ion-buttons slot="end">
+      <ion-label class="correo-actual">{{ correoActual }}</ion-label>
+      <ion-button routerLink="/nuevo">Nuevo</ion-button>
+      <ion-button (click)="salir()">Salir</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
